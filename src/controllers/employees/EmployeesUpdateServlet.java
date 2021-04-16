@@ -56,7 +56,7 @@ public class EmployeesUpdateServlet extends HttpServlet {
             if(password == null || password.equals("")) {
                 passwordCheckFlag = false;
             } else {
-                e.setpassword(
+                e.setPassword(
                         EncryptUtil.getPasswordEncrypt(
                                 password,
                                 (String)this.getServletContext().getAttribute("pepper")
