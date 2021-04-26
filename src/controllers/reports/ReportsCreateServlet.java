@@ -19,16 +19,16 @@ import models.validators.ReportValidator;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class ReportCreateServlet
+ * Servlet implementation class ReportsCreateServlet
  */
 @WebServlet("/reports/create")
-public class ReportCreateServlet extends HttpServlet {
+public class ReportsCreateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReportCreateServlet() {
+    public ReportsCreateServlet() {
         super();
     }
 
@@ -51,10 +51,8 @@ public class ReportCreateServlet extends HttpServlet {
             }
             r.setReport_date(report_date);
 
-
             r.setTitle(request.getParameter("title"));
             r.setContent(request.getParameter("content"));
-
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             r.setCreated_at(currentTime);
@@ -64,28 +62,22 @@ public class ReportCreateServlet extends HttpServlet {
             if(errors.size() > 0) {
                 em.close();
 
-
                 request.setAttribute("_token", request.getSession().getId());
                 request.setAttribute("report", r);
                 request.setAttribute("errors", errors);
 
-
-                RequestDispatcher rd = request.getRequestDispatcher("?WEB-INF/views/reports/new.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/reports/new.jsp");
                 rd.forward(request, response);
-            }else {
+            } else {
                 em.getTransaction().begin();
                 em.persist(r);
                 em.getTransaction().commit();
                 em.close();
                 request.getSession().setAttribute("flush", "登録が完了しました。");
 
-
                 response.sendRedirect(request.getContextPath() + "/reports/index");
-
             }
-
         }
-
     }
 
 }
