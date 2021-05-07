@@ -38,7 +38,6 @@ public class ReportLikeCountServlet extends HttpServlet {
         r.setLike_count(like_count);
 
         em.getTransaction().begin();
-
         em.getTransaction().commit();
         em.close();
 
