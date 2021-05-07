@@ -54,6 +54,8 @@ public class ReportsCreateServlet extends HttpServlet {
             r.setTitle(request.getParameter("title"));
             r.setContent(request.getParameter("content"));
 
+            r.setLike_count(0);
+
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             r.setCreated_at(currentTime);
             r.setUpdated_at(currentTime);
@@ -61,6 +63,7 @@ public class ReportsCreateServlet extends HttpServlet {
             List<String> errors = ReportValidator.validate(r);
             if(errors.size() > 0) {
                 em.close();
+
 
                 request.setAttribute("_token", request.getSession().getId());
                 request.setAttribute("report", r);

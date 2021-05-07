@@ -52,6 +52,9 @@ private Date report_date;
 @Column(name = "title", length = 255, nullable = false)
 private String title;
 
+@Column(name = "like_count",nullable = false)
+private Integer like_count;
+
 @Lob
 @Column(name = "content" , nullable = false)
 private String content;
@@ -91,6 +94,14 @@ public String getTitle(){
 public void setTitle(String title){
     this.title = title;
 }
+
+public Integer getLike_count(){
+    return like_count;
+}
+public void setLike_count(Integer like_count){
+    this.like_count = like_count;
+}
+
 public String getContent(){
     return content;
 }
