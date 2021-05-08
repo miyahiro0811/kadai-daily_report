@@ -21,8 +21,9 @@
           <c:forEach var="report" items="${reports}" varStatus="status">
                <tr class="row${status.count % 2}">
                    <td class="report_name"><c:out value="${report.employee.name}" /></td>
-                   <td class="report_date"><fmt:formatDate value='${report.report_date}' pattern='yyyy-mm-dd' /></td>
+                   <td class="report_date"><fmt:formatDate value='${report.report_date}' pattern='yyyy-MM-dd' /></td>
                    <td class="report/title">${report.title}</td>
+                   <td class="report/title">${report.like_count}</td>
                    <td class="report_action"><a href="<c:url value='/reports/show?id=${report.id}' />">詳細を見る</a></td>
                </tr>
              </c:forEach>

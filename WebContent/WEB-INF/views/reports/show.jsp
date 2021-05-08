@@ -5,7 +5,7 @@
     <c:param name="content">
         <c:choose>
             <c:when test="${report != null}">
-                <h2>日報　詳細ページ</h2>
+                <h2>日報 詳細ページ</h2>
 
                 <table>
                     <tbody>
@@ -37,7 +37,7 @@
                         </tr>
                         <tr>
                             <th>いいね数</th>
-                            <td><c:out value="${report.like_count}" /></td>
+                            <td>${report.like_count}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -46,7 +46,7 @@
                     <p><a href="<c:url value="/reports/edit?id=${report.id}" />">この日報を編集する</a></p>
                 </c:if>
                 <c:if test="${sessionScope.login_employee.id != report.employee.id}">
-                   <p><a href="<c:url value="/reports/like_count?id=${report.id}" />">この日報にいいねする</a></p>
+                   <p><a href="<c:url value="/reports/likecount?id=${report.id}" />">この日報にいいねする</a></p>
                 </c:if>
             </c:when>
             <c:otherwise>
